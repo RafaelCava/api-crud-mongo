@@ -1,11 +1,14 @@
 const express = require('express');
 const routes = express()
 
-routes.get('/api/produtos')
-routes.post('/api/produtos')
-routes.get('/api/produtos/:produtos_id')
-routes.put('/api/produtos/:produtos_id')
-routes.delete('/api/produtos/:produtos_id')
+routes.get('/', (req, res) => {
+  res.json({message: 'Beleza! bem-vindo a loja'})
+})
+routes.get('/produtos')
+routes.post('/produtos')
+routes.get('/produtos/:produtos_id')
+routes.put('/produtos/:produtos_id')
+routes.delete('/produtos/:produtos_id')
 
 module.exports = {
   routes
