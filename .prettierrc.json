@@ -1,0 +1,19 @@
+{
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "semi": false,
+  "singleQuote": true,
+  "env": {
+      "commonjs": true,
+      "es2021": true,
+      "node": true
+  },
+  "extends": [
+      "airbnb-base"
+  ],
+  "parserOptions": {
+      "ecmaVersion": 12
+  },
+  "rules": {
+  }
+}

@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require('express')
 const routes = express()
 
 routes.get('/', (req, res) => {
-  res.json({message: 'Beleza! bem-vindo a loja'})
+  res.json({ message: 'Beleza! bem-vindo a loja' })
 })
 routes.get('/produtos')
 routes.post('/produtos')
@@ -11,5 +11,5 @@ routes.put('/produtos/:produtos_id')
 routes.delete('/produtos/:produtos_id')
 
 module.exports = {
-  routes
+  routes,
 }
