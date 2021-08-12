@@ -8,19 +8,14 @@
 
 const Produto = require('../app/models/produto');
 
-const criarProduto = (req, res) => {
+const criarProduto = async (req, res) => {
   let produto = new Produto()
-
   produto.nome = req.body.nome
   produto.preco = req.body.preco
   produto.descricao = req.body.descricao
-
-  produto.save((err) => {
-    if (err) res.status(401).send('Não foi possível criar o produto ' + err)
-
-    res.json({
-      message: `produto criado com sucesso`
-    })
+  produto.save().then(() => console.log("criado"))
+  res.json({
+    message: `produto criado com sucesso`
   })
 }
 
@@ -48,26 +43,20 @@ const getProdutoById = (req, res) => {
   })
 }
 
-const substituirById = (req, res) => {
+const substituirById = async (req, res) => {
   const {
     produto_id
   } = req.params;
   Produto.findById(produto_id, (err, produto) => {
-    if (err) res.status(404).send('Não foi encontrado produto com id ' + produto_id)
+    if (err) return res.status(404).send('Não foi encontrado produto com id ' + produto_id)
     produto.nome = req.body.nome
     produto.preco = req.body.preco
     produto.descricao = req.body.descricao
-
-    produto.save((err) => {
-      if (err) res.status(401).send('Não foi possível atualizar o produto ' + err)
-
-      res.json({
-        message: `produto atualizado com sucesso`
-      })
-    })
-
+    produto.save().then(() => console.log("substituído"))
   })
-
+  res.json({
+    message: `produto substituído com sucesso`
+  })
 }
 
 const deleteById = (req, res) => {
