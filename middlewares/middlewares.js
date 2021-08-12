@@ -6,30 +6,42 @@
  */
 
 const post = (req, res, next) => {
-  if(req.method === 'POST'){
-    if(!req.body.nome){
-      res.status(401).json({message: 'falta o parâmetro nome'})
+  if (req.method === 'POST') {
+    if (!req.body.nome) {
+      res.status(401).json({
+        message: 'falta o parâmetro nome'
+      })
     }
-    if(!req.body.preco){
-      res.status(401).json({message: 'falta o parâmetro preço'})
+    if (!req.body.preco) {
+      res.status(401).json({
+        message: 'falta o parâmetro preço'
+      })
     }
-    if(!req.body.descricao){
-      res.status(401).json({message: 'falta o parâmetro descrição'})
+    if (!req.body.descricao) {
+      res.status(401).json({
+        message: 'falta o parâmetro descrição'
+      })
     }
     next()
   }
   next()
 }
 const put = (req, res, next) => {
-  if(req.method === 'PUT'){
-    if(!req.body.nome){
-      res.status(401).json({message: 'falta o parâmetro nome'})
+  if (req.method === 'PUT') {
+    if (!req.body.nome) {
+      res.status(401).json({
+        message: 'falta o parâmetro nome'
+      })
     }
-    if(!req.body.preco){
-      res.status(401).json({message: 'falta o parâmetro preço'})
+    if (!req.body.preco) {
+      res.status(401).json({
+        message: 'falta o parâmetro preço'
+      })
     }
-    if(!req.body.descricao){
-      res.status(400).json({message: 'falta o parâmetro descrição'})
+    if (!req.body.descricao) {
+      res.status(400).json({
+        message: 'falta o parâmetro descrição'
+      })
     }
     next()
   }

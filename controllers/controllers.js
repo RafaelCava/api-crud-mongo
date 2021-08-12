@@ -4,6 +4,8 @@
  * Author: Rafael Cavalcante
  * Data de criação: 10/08/2021
  */
+
+
 const Produto = require('../app/models/produto');
 
 const criarProduto = (req, res) => {
@@ -13,68 +15,80 @@ const criarProduto = (req, res) => {
   produto.preco = req.body.preco
   produto.descricao = req.body.descricao
 
-  produto.save(error=>{
-    if(error){
+  produto.save(error => {
+    if (error) {
       console.log('foi erro')
       return res.status(400).send('Erro ao tentar salvar o produto...' + err)
-    }else{
+    } else {
       console.log('produto criado')
-      res.status(201).json({message: "produto criado com sucesso!"})
+      res.status(201).json({
+        message: "produto criado com sucesso!"
+      })
     }
   })
 }
 
 const getProdutos = (req, res) => {
   Produto.find((error, produtos) => {
-    if(error)
+    if (error)
       res.status(404).send('Erro ao tentar selecionar todos os produtos... ' + error);
-      
-    res.status(200).json(produtos);  
+
+    res.status(200).json(produtos);
   })
 }
 
 const getProdutoById = (req, res) => {
-  const { produto_id } = req.params;
+  const {
+    produto_id
+  } = req.params;
   Produto.findById(produto_id, (err, produto) => {
-    if(produto !== null){
-      if(err) res.status(404).send('Não foi encontrado produto com id ' + produto_id)
-      
-      res.json(produto)  
-    }else{
+    if (produto !== null) {
+      if (err) res.status(404).send('Não foi encontrado produto com id ' + produto_id)
+
+      res.json(produto)
+    } else {
       res.status(404).send('Não foi encontrado produto com id ' + produto_id)
     }
   })
 }
 
 const substituirById = (req, res) => {
-  const { produto_id } = req.params;
+  const {
+    produto_id
+  } = req.params;
   Produto.findById(produto_id, (err, produto) => {
-    if(err) res.status(404).send('Não foi encontrado produto com id ' + produto_id)
+    if (err) res.status(404).send('Não foi encontrado produto com id ' + produto_id)
     produto.nome = req.body.nome
     produto.preco = req.body.preco
     produto.descricao = req.body.descricao
 
-    produto.save((err) =>{
-      if(err) res.status(401).send('Não foi possível atualizar o produto ' + err)
+    produto.save((err) => {
+      if (err) res.status(401).send('Não foi possível atualizar o produto ' + err)
 
-      res.json({message: `produto atualizado com sucesso`})  
+      res.json({
+        message: `produto atualizado com sucesso`
+      })
     })
-    
+
   })
 
 }
 
 const deleteById = (req, res) => {
-  const { produto_id } = req.params;
+  const {
+    produto_id
+  } = req.params;
   Produto.findById(produto_id, (err, produto) => {
-    if(err) res.status(404).send('Não foi possível encontrar o produto.')
-    if(produto !== null){
-      produto.delete(err =>{
-        if(err) res.status(401).send('Não foi possível deletar o produto.')
-        
-        res.status(200).json({message: "Produto apagado"})
+    if (err) res.status(404).send('Não foi possível encontrar o produto.')
+    if (produto !== null) {
+      produto.delete(err => {
+        if (err) res.status(401).send('Não foi possível deletar o produto.')
+
+        res.status(200).json({
+          message: "Produto apagado"
+        })
       });
-    }else{
+    } else {
       res.status(404).send('Não foi possível encontrar o produto.')
     }
   })
