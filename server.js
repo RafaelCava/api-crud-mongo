@@ -7,7 +7,6 @@
 
 const express = require('express')
 const swaggerUi = require('swagger-ui-express');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const {
   routes
@@ -17,6 +16,8 @@ const {
   put
 } = require('./middlewares/middlewares');
 const uri = "mongodb+srv://dbAdmin:12345@node-crud-api.fog8d.mongodb.net/node-crud-api";
+// const uri = "mongodb://localhost:27017/node-crud-api"; /* Local */
+
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -26,10 +27,10 @@ const app = express()
 
 const port = process.env.port || 8000
 
-app.use(bodyParser.urlencoded({
+app.use(express.urlencoded({
   extended: true
 }))
-app.use(bodyParser.json())
+app.use(express.json())
 
 app.use(post)
 app.use(put)
