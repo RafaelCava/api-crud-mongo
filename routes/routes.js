@@ -1,3 +1,9 @@
+/* *
+ * Arquivo: routes.js
+ * Descrição: Arquivos que contém todas as rotas do projeto CRUD
+ * Author: Rafael Cavalcante
+ * Data de criação: 10/08/2021
+ */
 const express = require('express')
 const { criarProduto, getProdutos, getProdutoById, substituirById } = require('../controllers/controllers')
 const routes = express()
