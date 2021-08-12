@@ -7,6 +7,7 @@
 
 const express = require('express')
 const bodyParser = require('body-parser')
+const swaggerUi = require('swagger-ui-express');
 const mongoose = require('mongoose');
 const { routes } = require('./routes/routes')
 const { post } = require('./middlewares/middlewares');
@@ -25,6 +26,7 @@ app.use(express.json())
 app.use(post)
 
 app.use('/api', routes)
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(require('./swagger/swagger.json')))
 
 
 app.listen(port)
