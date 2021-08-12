@@ -37,13 +37,31 @@ const getProdutoById = (req, res) => {
   const { produto_id } = req.params;
   Produto.findById(produto_id, (err, produto) => {
     if(err)
-      res.status(404).send('Não foi encontrado produto com id ' + produto_id)
-
+    res.status(404).send('Não foi encontrado produto com id ' + produto_id)
+    
     res.json(produto)  
   })
 }
 
 const substituirById = (req, res) => {
+  const { produto_id } = req.params;
+  Produto.findById(produto_id, (err, produto) => {
+    if(err) res.status(404).send('Não foi encontrado produto com id ' + produto_id)
+    produto.nome = req.body.nome
+    produto.preco = req.body.preco
+    produto.descricao = req.body.descricao
+
+    produto.save((err) =>{
+      if(err) res.status(401).send('Não foi possível atualizar o produto ' + err)
+
+      res.json({message: `produto atualizado com sucesso`})  
+    })
+    
+  })
+
+}
+
+const deletaById = (req, res) => {
 
 }
 
@@ -51,5 +69,6 @@ module.exports = {
   criarProduto,
   getProdutos,
   getProdutoById,
-  substituirById
+  substituirById,
+  deletaById
 }
