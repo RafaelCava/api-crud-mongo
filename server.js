@@ -9,7 +9,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const { routes } = require('./routes/routes')
-const Produto = require('./app/models/produto');
 const { middlewares } = require('./middlewares/middlewares');
 const uri = "mongodb+srv://dbAdmin:12345@node-crud-api.fog8d.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true})

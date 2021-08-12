@@ -1,14 +1,23 @@
 const express = require('express')
+const { criarProduto } = require('../controllers/controllers')
 const routes = express()
 
 routes.get('/', (req, res) => {
   res.json({ message: 'Beleza! bem-vindo a loja' })
 })
-routes.get('/produtos')
-routes.post('/produtos')
-routes.get('/produtos/:produtos_id')
-routes.put('/produtos/:produtos_id')
-routes.delete('/produtos/:produtos_id')
+routes.route('/produtos')
+.get(criarProduto)
+.post((req, res) => {
+  res.json({ message: 'Beleza! bem-vindo a loja' })
+})
+
+routes.route('/produtos/:produtos_id')
+.put((req, res) => {
+  res.json({ message: 'Beleza! bem-vindo a loja' })
+})
+.delete((req, res) => {
+  res.json({ message: 'Beleza! bem-vindo a loja' })
+})
 
 module.exports = {
   routes,
