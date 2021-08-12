@@ -11,6 +11,7 @@ const post = (req, res, next) => {
     }
     next()
   }
+  next()
 }
 
 module.exports = {
