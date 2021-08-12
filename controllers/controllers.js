@@ -61,8 +61,20 @@ const substituirById = (req, res) => {
 
 }
 
-const deletaById = (req, res) => {
-
+const deleteById = (req, res) => {
+  const { produto_id } = req.params;
+  Produto.findById(produto_id, (err, produto) => {
+    if(err) res.status(404).send('Não foi possível encontrar o produto.')
+    if(produto !== null){
+      produto.delete(err =>{
+        if(err) res.status(401).send('Não foi possível deletar o produto.')
+        
+        res.status(200).json({message: "Produto apagado"})
+      });
+    }else{
+      res.status(404).send('Não foi possível encontrar o produto.')
+    }
+  })
 }
 
 module.exports = {
@@ -70,5 +82,5 @@ module.exports = {
   getProdutos,
   getProdutoById,
   substituirById,
-  deletaById
+  deleteById
 }
