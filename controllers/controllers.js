@@ -36,10 +36,13 @@ const getProdutos = (req, res) => {
 const getProdutoById = (req, res) => {
   const { produto_id } = req.params;
   Produto.findById(produto_id, (err, produto) => {
-    if(err)
-    res.status(404).send('Não foi encontrado produto com id ' + produto_id)
-    
-    res.json(produto)  
+    if(produto !== null){
+      if(err) res.status(404).send('Não foi encontrado produto com id ' + produto_id)
+      
+      res.json(produto)  
+    }else{
+      res.status(404).send('Não foi encontrado produto com id ' + produto_id)
+    }
   })
 }
 
