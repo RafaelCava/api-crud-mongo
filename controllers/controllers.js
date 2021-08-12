@@ -15,16 +15,12 @@ const criarProduto = (req, res) => {
   produto.preco = req.body.preco
   produto.descricao = req.body.descricao
 
-  produto.save(error => {
-    if (error) {
-      console.log('foi erro')
-      return res.status(400).send('Erro ao tentar salvar o produto...' + err)
-    } else {
-      console.log('produto criado')
-      res.status(201).json({
-        message: "produto criado com sucesso!"
-      })
-    }
+  produto.save((err) => {
+    if (err) res.status(401).send('Não foi possível criar o produto ' + err)
+
+    res.json({
+      message: `produto criado com sucesso`
+    })
   })
 }
 
