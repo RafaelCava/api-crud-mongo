@@ -1,5 +1,12 @@
 # Projeto CRUD
 
+## Tecnologias usadas
+
+ - Mongoose
+ - Node.js
+ - Express
+ - MongoDB
+ - Swagger
 ## Iniciando o projeto
 
  - Primeiro baixe as dependências do projeto.
