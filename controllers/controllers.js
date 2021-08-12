@@ -13,10 +13,14 @@ const criarProduto = async (req, res) => {
   produto.nome = req.body.nome
   produto.preco = req.body.preco
   produto.descricao = req.body.descricao
-  produto.save().then(() => console.log("criado"))
-  res.json({
-    message: `produto criado com sucesso`
-  })
+  try {
+    produto.save().then(() => console.log("criado"))
+    res.json({
+      message: `produto criado com sucesso`
+    })
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 const getProdutos = (req, res) => {
@@ -43,19 +47,23 @@ const getProdutoById = (req, res) => {
   })
 }
 
-const substituirById = async (req, res) => {
+const substituirById = (req, res) => {
   const {
     produto_id
   } = req.params;
-  Produto.findById(produto_id, (err, produto) => {
+  Produto.findById(produto_id, async (err, produto) => {
     if (err) return res.status(404).send('Não foi encontrado produto com id ' + produto_id)
     produto.nome = req.body.nome
     produto.preco = req.body.preco
     produto.descricao = req.body.descricao
-    produto.save().then(() => console.log("substituído"))
-  })
-  res.json({
-    message: `produto substituído com sucesso`
+    try {
+      produto.save().then(() => console.log("substituído"))
+      res.json({
+        message: `produto substituído com sucesso`
+      })
+    } catch (err) {
+      console.error(err);
+    }
   })
 }
 
