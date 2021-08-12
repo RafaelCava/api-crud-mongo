@@ -29,7 +29,7 @@ const put = (req, res, next) => {
       res.status(401).json({message: 'falta o parâmetro preço'})
     }
     if(!req.body.descricao){
-      res.status(401).json({message: 'falta o parâmetro descrição'})
+      res.status(400).json({message: 'falta o parâmetro descrição'})
     }
     next()
   }

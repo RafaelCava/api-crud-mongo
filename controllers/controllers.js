@@ -19,7 +19,7 @@ const criarProduto = (req, res) => {
       return res.status(400).send('Erro ao tentar salvar o produto...' + err)
     }else{
       console.log('produto criado')
-      res.status(200).json({message: "produto criado com sucesso!"})
+      res.status(201).json({message: "produto criado com sucesso!"})
     }
   })
 }
