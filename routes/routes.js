@@ -7,9 +7,7 @@ routes.get('/', (req, res) => {
 })
 routes.route('/produtos')
 .get(criarProduto)
-.post((req, res) => {
-  res.json({ message: 'Beleza! bem-vindo a loja' })
-})
+.post(criarProduto)
 
 routes.route('/produtos/:produtos_id')
 .put((req, res) => {
