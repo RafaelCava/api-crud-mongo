@@ -20,9 +20,9 @@ yarn
  - Depois inicie o projeto
 
 ```bash
-npm run dev 
+npm run start
 #or
-yarn dev
+yarn start
 ```
 
 ## Rotas
