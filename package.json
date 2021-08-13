@@ -5,7 +5,8 @@
   "author": "Rafael <ra.facavalcante@hotmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "dependencies": {
     "eslint": "^7.32.0",
