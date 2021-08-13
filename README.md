@@ -3,10 +3,11 @@
 ## Tecnologias usadas
 
  - Mongoose
+ - MongoDB
  - Node.js
  - Express
- - MongoDB
  - Swagger
+
 ## Iniciando o projeto
 
  - Primeiro baixe as dependências do projeto.
