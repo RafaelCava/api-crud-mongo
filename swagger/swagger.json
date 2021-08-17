@@ -17,7 +17,7 @@
     "/api/": {
       "get": {
         "tags": [],
-        "description": "",
+        "description": "Retorna um Json com a messagem 'Bem vindo a loja'.",
         "parameters": [
           {
             "name": "obj",
