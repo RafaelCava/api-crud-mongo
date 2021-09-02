@@ -1,3 +1,3 @@
 const swaggerAutogen = require('swagger-autogen');
 
-swaggerAutogen()("./swagger/swagger.json",["./server.js"])
+swaggerAutogen()("./swagger/swagger.json",["../src/server.js"])
